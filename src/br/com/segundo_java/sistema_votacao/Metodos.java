@@ -89,12 +89,12 @@ public class Metodos {
         int[][] mat = new int[2][300];
 
         for(int i = 0; i < 300; i++){
-            mat[0][i] = i;
+            mat[0][i] = i+1;
             mat[1][i] = qtdCandidatos[i];
         }
 
-        for(int i = 0; i < 9; i++){
-            for(int j = (i+1); j < 10; j++) {
+        for(int i = 0; i < 299; i++){
+            for(int j = (i+1); j < 300; j++) {
                 if (mat[1][i] < mat[1][j]) {
                     int aux = mat[1][i];
                     mat[1][i] = mat[1][j];
