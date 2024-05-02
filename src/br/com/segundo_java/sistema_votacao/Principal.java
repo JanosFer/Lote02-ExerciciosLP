@@ -27,24 +27,26 @@ public class Principal {
                     votacao = m.GravarArquivo(votacao);
                     break;
                 case 4:
-                    while(opc4 != 9 || opc4 != 8){
+                    while(opc4 != 8){
                         opc4 = Integer.parseInt(JOptionPane.showInputDialog("Informe a opção desejada: \n 1 - Quantidade de eleitores por eleição. \n 2 - Seção com maior e menor número de eleitores. \n 3 - Quantidade de votos por candidato. \n 4 - 10 candidatos mais votados. \n 8 - Voltar ao menu anterior. \n 9 - Finalizar programa."));
                         switch(opc4){
                             case 1:
                                 m.QtdEleitoresPorSecao(votacao);
                                 break;
                             case 2:
-                                m.MaiorMenorSecao(votacao);
+                                m.MaiorMenorSecao();
                                 break;
                             case 3:
                                 m.QtdVotosPorCandidato(votacao);
                                 break;
                             case 4:
-                                m.DezMaisVotados(votacao);
+                                m.DezMaisVotados();
                                 break;
                             case 8:
                                 break;
                             case 9:
+                                JOptionPane.showMessageDialog(null, "Programa Finalizado!");
+                                opc4 = 8;
                                 opc = 9;
                                 break;
                             default:
