@@ -1,14 +1,30 @@
 package br.com.segundo_java.sistema_estatistica_transito;
 
 import javax.swing.JOptionPane;
+import java.io.*;
 
 public class Metodos {
-    public Estatistica[] Cadastra(Estatistica[] estatistica){//Método para cadastrar Cidades, seu código e sua quantidade de acidentes.
+    public Estatistica[] Cadastra(Estatistica[] estatistica) throws IOException{//Método para cadastrar e gravar em arquivo txt Cidades, seu código e sua quantidade de acidentes.
+        String fileName = "EstatisticasCidades.txt";
+
+        BufferedWriter gravar = new BufferedWriter(new FileWriter(fileName));
+
         for(int i = 0; i < 10; i++){
-            estatistica[i].codigoCidade =Integer.parseInt(JOptionPane.showInputDialog("Informe o código da cidade: "));
+            estatistica[i].codigoCidade = Integer.parseInt(JOptionPane.showInputDialog("Informe o código da cidade: "));
+            gravar.write(Integer.toString(estatistica[i].codigoCidade));
+            gravar.newLine();
             estatistica[i].nomeCidade = JOptionPane.showInputDialog("Informe o nome da cidade: ");
+            gravar.write(estatistica[i].nomeCidade);
+            gravar.newLine();
             estatistica[i].qtdAcidentes = Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade de acidentes: "));
+            gravar.write(Integer.toString(estatistica[i].qtdAcidentes));
+            gravar.newLine();
         }
+
+        System.out.println("GRAVAÇÃO FEITA COM SUCESSO!");
+
+        gravar.close();
+
         return estatistica;
     }
 

@@ -37,8 +37,10 @@ public class Metodos {
         BufferedWriter gravar = new BufferedWriter(new FileWriter(fileName));
 
         for(int i = 0; i < 200; i++){
-            gravar.write(votacao[i].numeroSecao); gravar.newLine();
-            gravar.write(votacao[i].numeroCandidato); gravar.newLine();
+            gravar.write(Integer.toString(votacao[i].numeroSecao));
+            gravar.newLine();
+            gravar.write(Integer.toString(votacao[i].numeroCandidato));
+            gravar.newLine();
         }
 
         System.out.println("GRAVAÇÃO FEITA COM SUCESSO!");

@@ -1,9 +1,10 @@
 package br.com.segundo_java.sistema_estatistica_transito;
 
 import javax.swing.JOptionPane;
+import java.io.IOException;
 
 public class Principal {
-    public static void main (String[] args){
+    public static void main (String[] args) throws IOException{
         Estatistica[] estatistica = new Estatistica[10];
         Metodos m = new Metodos();
 
@@ -14,7 +15,7 @@ public class Principal {
         }
 
         while(opc != 9){
-            opc = Integer.parseInt(JOptionPane.showInputDialog("Informe a opção desejada: \n Digite: \n 1 -  Cadastrar Acidentes. \n 2 - Consultar cidades com mais de 100 acidentes e menos de 500 acidentes. \n 3 - Consultar as cidades com o maior número de acidentes e com o menor número de acidentes. \n 4 - Consultar cidades com número de acidentes acima da média. \n 9 - Finalizar."));
+            opc = Integer.parseInt(JOptionPane.showInputDialog("Informe a opção desejada: \n Digite: \n 1 -  Cadastrar  e Gravar Acidentes. \n 2 - Consultar cidades com mais de 100 acidentes e menos de 500 acidentes. \n 3 - Consultar as cidades com o maior número de acidentes e com o menor número de acidentes. \n 4 - Consultar cidades com número de acidentes acima da média. \n 9 - Finalizar."));
             switch(opc){
                 case 1:
                     estatistica = m.Cadastra(estatistica);

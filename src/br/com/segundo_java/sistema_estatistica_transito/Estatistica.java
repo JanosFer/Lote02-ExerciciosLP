@@ -14,5 +14,4 @@ public class Estatistica {
         this.nomeCidade = nomeCidade;
         this.qtdAcidentes = qtdAcidentes;
     }
-
 }
