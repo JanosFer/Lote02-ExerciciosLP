@@ -49,7 +49,7 @@ public class Metodos {
             gravar.newLine();
 
             while(true) {
-                votacao[i].codCandidato = Integer.parseInt(JOptionPane.showInputDialog("Informe o Código do Candidato: "));
+                votacao[i].codCandidato = Integer.parseInt(JOptionPane.showInputDialog("1 - José \n 2 - Maria \n 3 - Branco \n 4 - Nulo "));
                 if(votacao[i].codCandidato >= 100 || votacao[i].codCandidato <= 0){
                     JOptionPane.showMessageDialog(null, "Valor Inválido, informe um valor entre 1 e 99 para concluir a votação.");
                 }else {
