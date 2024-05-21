@@ -19,7 +19,7 @@ public class Metodos {
             System.out.println("Informe o Código da Conta: ");
             conta[i].codConta = scanner.nextInt();
             System.out.println("Informe o Nome do Cliente: ");
-            conta[i].nomeCliente = scanner.nextLine();
+            conta[i].nomeCliente = scanner.next();
             System.out.println("Informe o Saldo da Conta: ");
             conta[i].saldoConta = scanner.nextDouble();
             System.out.println("Informe o Limite da Conta: ");
@@ -53,13 +53,26 @@ public class Metodos {
         return conta;
     }
 
-    public MovimentoContas[] CadastraMovimentos(MovimentoContas[] movimento) throws IOException{
+    public MovimentoContas[] CadastraMovimentos(MovimentoContas[] movimento, ContaCorrente[] conta) throws IOException{
 
         BufferedWriter gravar = new BufferedWriter(new FileWriter(fileName2));
 
-        for(int i = 0; i < 10; i++){
-            System.out.println("Informe o Código da Conta: ");
-            movimento[i].codContaM = scanner.nextInt();
+        for(int i = 0; i < 5; i++){
+            boolean verificaConta = false;
+
+            while(!verificaConta) {
+                System.out.println("Informe o Código da Conta: ");
+                movimento[i].codContaM = scanner.nextInt();
+                for (int j = 0; j < 10; j++) {
+                    if (conta[i].codConta == movimento[j].codContaM){
+                        verificaConta = true;
+                        break;
+                    }
+                }
+                if(!verificaConta){
+                    System.err.println("Código de Conta Inválido!");
+                }
+            }
             System.out.println("Informe o Valor do Movimento: ");
             movimento[i].valorMovimentoM = scanner.nextDouble();
             System.out.println("Informe o Tipo do Movimento: \n 1 - Crédito \n 2 - Débito");
@@ -79,6 +92,8 @@ public class Metodos {
         }
 
         for (int i = 0; i < 10; i++) {
+            gravar.write(Integer.toString(movimento[i].codContaM));
+            gravar.newLine();
             gravar.write(Integer.toString(movimento[i].codContaM));
             gravar.newLine();
             gravar.write(Double.toString(movimento[i].valorMovimentoM));
@@ -125,8 +140,6 @@ public class Metodos {
         }
 
         for(int i = 0; i < 5; i++){
-            atualizacao[i].codContaA = cod[i];
-            atualizacao[i].nomeClienteA = nome[i];
             for(int j = 0; j < 10; j++) {
                 if(cod[i] == codM[j]) {
                     if(status[j] == 2){
@@ -174,28 +187,20 @@ public class Metodos {
                         }
                     }
                 }
+                atualizacao[i].codContaA = cod[i];
+                gravar.write(Integer.toString(atualizacao[i].codContaA));
+                gravar.newLine();
+                atualizacao[i].nomeClienteA = nome[i];
+                gravar.write(atualizacao[i].nomeClienteA);
+                gravar.newLine();
+                gravar.write(Double.toString(atualizacao[i].saldoContaA));
+                gravar.newLine();
+                gravar.write(Double.toString(atualizacao[i].limiteContaA));
+                gravar.newLine();
+                gravar.write(Integer.toString(atualizacao[i].tipoContaA));
+                gravar.newLine();
             }
         }
-
-        for(int i = 0; i < 5; i++){
-            gravar.write(Integer.toString(atualizacao[i].codContaA));
-            gravar.newLine();
-
-            gravar.write(atualizacao[i].nomeClienteA);
-            gravar.newLine();
-
-            gravar.write(Double.toString(atualizacao[i].saldoContaA));
-            gravar.newLine();
-
-            atualizacao[i].limiteContaA = scanner.nextDouble();
-            gravar.write(Double.toString(atualizacao[i].limiteContaA));
-            gravar.newLine();
-
-            atualizacao[i].tipoContaA = scanner.nextInt();
-            gravar.write(Integer.toString(atualizacao[i].tipoContaA));
-            gravar.newLine();
-        }
-
         gravar.close();
         return atualizacao;
     }

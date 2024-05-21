@@ -61,13 +61,6 @@ public class Metodos {
 
             while(!verificaNumEleitor){
                 votacao[i].numeroEleitor = Integer.parseInt(JOptionPane.showInputDialog("Informe o Número do Eleitor"));
-//                if(verificar(votacao[i].numeroEleitor, cadastroEleitor)){
-//                    gravar.write(Integer.toString(votacao[i].numeroEleitor));
-//                    gravar.newLine();
-//                    verificaNumEleitor = true;
-//                }else{
-//                    JOptionPane.showMessageDialog(null, "Número de Eleitor Inválido");
-//                }
                 for(int j = 0; j < 10; j++){
                     if(verificar(votacao,i)){
                         if(votacao[i].numeroEleitor == cadastroEleitor[j].numeroEleitor ){

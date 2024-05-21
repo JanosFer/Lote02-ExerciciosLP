@@ -29,7 +29,7 @@ public class Principal {
                     conta = m.CadastraContas(conta);
                     break;
                 case 2:
-                    movimento = m.CadastraMovimentos(movimento);
+                    movimento = m.CadastraMovimentos(movimento, conta);
                     break;
                 case 3:
                     atualizacao = m.CadastraAtualizacoes(atualizacao);
