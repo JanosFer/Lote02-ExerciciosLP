@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Metodos {
 
-    Scanner scanner = new Scanner();
+    Scanner scanner = new Scanner(System.in);
 
     String fileName = "ContasCorrentes.txt";
     String fileName2 = "Movimentos.txt";
